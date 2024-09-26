@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymleaf.org">
 
-  <div class="container-fluid fixed-bottom  bg-primary text-white"  th:fragment="footer">
-      <div class="d-flex justify-content-center p-2">
-         <h3>footer...</h3>
-         <br>
+  <div class="container-fluid fixed-bottom bg-primary text-white" th:fragment="footer">
+    <div class="row py-4">
+      <div class="col-md-4 text-center">
+        <h5>회사 정보</h5>
+        <p>주소: 서울시 강남구 테헤란로 123</p>
+        <p>전화: 02-1234-5678</p>
       </div>
+      <div class="col-md-4 text-center">
+        <h5>빠른 링크</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white">홈</a></li>
+          <li><a href="#" class="text-white">서비스</a></li>
+          <li><a href="#" class="text-white">문의하기</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-center">
+        <h5>소셜 미디어</h5>
+        <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center py-3">
+        <p>&copy; 2023 회사명. 모든 권리 보유.</p>
+      </div>
+    </div>
   </div>
   
 </html>
