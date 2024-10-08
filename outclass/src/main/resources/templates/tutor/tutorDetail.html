@@ -1,0 +1,69 @@
+
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<!-- layouts 폴더에 있는 layout1.html파일을 가져온다 -->
+
+    <div layout:fragment="content">
+
+    <!-- include summernote css/js-->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+
+        <div class="container  p-2">
+            <div class="row m-3">
+                <div class="col text-start">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/tutorNewAdd">새 강의만들기</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                      </ul>
+                </div>
+                <div class="col-9">
+                  <div class="mb-5">                     
+                     <span class="text-gray"> 강의정보 | 커리큘럼 | 상세소개 | 커버이미지 | <span class="fw-bold" >강의설정</span> | 자주 묻는 질문 설정 </span>
+                  </div>
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      상세소개 (강의제목 출력)
+                    </div>
+                  <form action="/studyImage" method="post">  
+                    <!-- 강의번호 보냄... -->
+                    <input type="hidden" name="class_info_no" value=""> 
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <div class="mb-3">      
+                          <label for="class_info_content" class="form-label">
+                             강의 상세 소개
+                          </label>                  
+                          <textarea class="form-control" id="class_info_content" name="class_info_content" rows="10"></textarea>    
+                          <script>
+                            $(function(){
+                                $("#class_info_content").summernote({
+                                  placelholder: '강의 소개 글을 입력하세요',
+                                  tabsize: 2,
+                                  height: 500
+                                });
+                            });
+                          </script>
+                        </div>
+                      </blockquote>
+                    </div>                   
+                    <div class="mb-3 text-center">
+                      <button type="submit" class="btn btn-primary" >저장후 다음아로 이동</button>
+                    </div>     
+                </form>  
+                <br>
+              </div>
+            </div>
+        </div>

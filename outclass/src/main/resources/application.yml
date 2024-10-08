@@ -5,6 +5,19 @@ spring:
   application:
     name: outclass
 
+
+  ####################################
+  # 자동갱신...
+  ####################################
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+
 ####################################
 # 데이터베이스 설정
 ####################################
@@ -28,3 +41,18 @@ spring:
       hibernate:
         format_sql: true    # 포멧 처리해서 보이기
     #database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL8 버전 사용
+
+  security:
+    user:
+      name: admin@naver.com
+      password: 123456
+####################################
+# 로그 정보 설정
+####################################
+  logging:
+    level:
+      org:
+        hibernate:
+          type:
+            descriptor:
+              sql: trace  # 물음표에 바인드 파라미터 출력

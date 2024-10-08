@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--<html lang="ko">-->
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+      <!-- layouts 폴더에 있는 layout1.html파일을 가져온다 -->
+
+  <div class="container" layout:fragment="content">
+      <div class="d-flex justify-content-center">
+        <form action="/user/tutorSignUpAction" method="post">
+            <div class="mb-3 mt-3">
+              <label for="user_email" class="form-label">Email:</label>
+              <input type="text" class="form-control" id="user_email" name="user_email" disabled />
+            </div>
+     
+            <div class="mb-3">
+              <label for="t_career" class="form-label">경력 및 저서 입력</label>
+              <textarea class="form-control" id="t_career" name="t_career" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="t_introduce" class="form-label">강소 소개글</label>
+              <textarea class="form-control" id="t_introduce" name="t_introduce" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="t_youtube" class="form-label">유투브 URL</label>
+              <input type="text" class="form-control" id="t_youtube" name="t_youtube" />
+            </div>
+
+            <div class="mb-3">
+              <label for="t_instagram" class="form-label">인스타 그램</label>
+              <input type="text" class="form-control" id="t_instagram" name="t_instagram" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">강사지원하기</button>
+          </form>
+      </div>
+  </div>
+</html>
