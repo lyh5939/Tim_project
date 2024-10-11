@@ -2,6 +2,7 @@ package com.study.outclass.controller;
 
 
 import com.study.outclass.Entity.Users;
+import com.study.outclass.config.AuditConfig;
 import com.study.outclass.dto.UserDto;
 import com.study.outclass.repository.UserRepository;
 import com.study.outclass.service.UserService;
@@ -25,6 +26,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -34,6 +36,7 @@ public class UserController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final AuditConfig auditConfig;
 
     @GetMapping("/login")
     public  String login(){
@@ -43,7 +46,7 @@ public class UserController {
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/user/userLoginForm";
+        return "user/userLoginForm";
     }
 
     @GetMapping("/logout")
@@ -85,4 +88,31 @@ public class UserController {
         }
 
     }
+
+    @GetMapping("/tutorSignUp")
+    public  String tutorSignUp(Model model){
+        // 로그인된 사용자 정보 가져오기
+
+        Authentication authentication = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
+        String userEmail = "";
+        if(authentication != null){
+            userEmail = authentication.getName();  // Session정보중  username에 해당값을 가져옴
+        }
+
+        log.info("===> userEmail : " + userEmail );
+
+        Optional<Users> user = userService.findByemail(userEmail);
+
+        UserDto userDto = new UserDto();
+        userDto.setUserNo(user.get().getUserNo());
+        userDto.setUserEmail(user.get().getUserEmail());
+
+
+        model.addAttribute("userDto", userDto);
+        return "user/tutorSignUp";
+    }
+
+
 }

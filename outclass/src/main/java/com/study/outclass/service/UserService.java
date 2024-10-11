@@ -2,6 +2,7 @@ package com.study.outclass.service;
 
 
 import com.study.outclass.Entity.Users;
+import com.study.outclass.dto.UserDto;
 import com.study.outclass.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,10 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public Optional<Users> findByemail(String email){
+        return userRepository.findByuserEmail(email);
+    }
+
     private void validateDuplicationUser(Users user) {
 
         Optional<Users> findUser = userRepository.findByuserEmail(user.getUserEmail());
@@ -43,10 +48,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email)
                                           throws UsernameNotFoundException {
-      log.info("====? login : " + email);
       Users users = userRepository.findByuserEmail(email).orElseThrow(()->
               new UsernameNotFoundException("해당 사용자없습니다."+email));
       log.info("===> [login user ] : " + users.getUserEmail());
+
       return User.builder()
               .username(users.getUserEmail())
               .password(users.getUserPw())

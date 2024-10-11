@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--<html lang="ko">-->
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<!-- layouts 폴더에 있는 layout1.html파일을 가져온다 -->
+
+<th:block layout:fragment="css">
+    <style>
+        .fieldError{
+           color: #bd2130;
+        }
+    </style>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready( function(){
+           let errorMessage = [[${errorMessage}]];
+           if(errorMessage != null){
+             alert(errorMessage);
+           }
+        });
+    </script>
+</th:block>
+
+
+<div class="container" layout:fragment="content">
+    <div class="row">
+        <div class=" w-100 d-flex justify-content-center mb-5">
+            <form action="/tutor/tutorSignUpAction" method="post"  enctype="multipart/form-data" role="form" th:object="${userDto}">
+                <h3 class="text-center" style="width: 400px;">강사 지원</h3>
+                <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}">
+                <div class="mb-3 mt-3">
+                    <label for="userNo" class="form-label">회원번호</label>
+                    <input type="text" class="form-control" id="userNo"  th:value="${userDto.userNo}"
+                           placeholder="이메일 입력하세요" name="userNo" th:filed="*{userNo}">
+                    <!-- 이름이 입력 안된경우 -->
+                    <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userNo}"
+                       class="fieldError"></p>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="userEmail" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="userEmail"
+                           placeholder="이메일 입력하세요" name="userEmail" th:value="${userDto.userEmail}" th:filed="*{userEmail}">
+                    <!-- 이름이 입력 안된경우 -->
+                    <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}"
+                       class="fieldError"></p>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="userName" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="userName"
+                           placeholder="이름을 입력하세요" name="userName"
+                           th:filed='*{userName}' th:value="${userDto.userName}">
+                    <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
+                       class="fieldError"></p>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="userNickname" class="form-label">닉네임</label>
+                    <input type="text" class="form-control" id="userNickname"
+                           placeholder="닉네임을 입력하세요" name="userNickname" th:value="${userDto.userNickname}"
+                           th:filed='*{userNickname}'>
+                    <p th:if="${#fields.hasErrors('userNickname')}" th:errors="*{userNickname}"
+                       class="fieldError"></p>
+                </div>
+                <p class="text-center">
+                    <button type="submit" class="btn btn-primary">가입</button>
+                </p>
+            </form>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</div>
+</html>

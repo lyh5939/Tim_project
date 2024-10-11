@@ -46,9 +46,10 @@ spring:
     user:
       name: admin@naver.com
       password: 123456
-####################################
-# 로그 정보 설정
-####################################
+
+  ####################################
+  # 로그 정보 설정
+  ####################################
   logging:
     level:
       org:
@@ -56,3 +57,17 @@ spring:
           type:
             descriptor:
               sql: trace  # 물음표에 바인드 파라미터 출력
+
+####################################
+# 파일저장정보
+####################################
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+
+userImgLocation: D:/BigData/Tim_Project/outclass/src/main/resources/static/images
+uploadPath: file:///D:/BigData/Tim_Project/outclass/src/main/resources/static/
+
+
+

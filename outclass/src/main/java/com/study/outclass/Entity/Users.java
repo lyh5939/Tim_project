@@ -3,6 +3,7 @@ package com.study.outclass.Entity;
 
 import java.time.LocalDateTime;
 
+import com.study.outclass.common.entity.BaseEntity;
 import com.study.outclass.constant.Role;
 import com.study.outclass.dto.UserDto;
 import jakarta.persistence.*;
@@ -23,8 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Users {
+@Entity                    //가입일자, 마지막 접속일자 자동감지
+public class Users extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,21 +48,21 @@ public class Users {
     @Column(nullable = false)
     private int userBlackList=0;  // 정지상태...
 
-    @Default
-    @Column(nullable = false)
-    @CreatedDate
-    private  LocalDateTime userJoinDate=LocalDateTime.now();  //가입일자
-
-    @LastModifiedDate
-    @Column(nullable = true)
-    private  LocalDateTime userLastAccess;  // 마지막 접속일시
 
     @Default
     @Column(nullable = false)
     private  String  userGrade="일반";      // 회원 등급
 
-    @Column(nullable = true)
-    private  String  userProfileImage;    // 사진
+//    @Column(nullable = true)
+//    private  String  userProfileImage;    // 사진
+//
+//    @Column(nullable = true)
+//    private  String  userProfileImageOriName;  // 원본이미지 파일명
+//
+//    @Column(nullable = true)
+//    private  String  userProfileImagePath;   // 유저 이미지 파일경로
+
+
 
     @Default
     @Column(nullable = false)
@@ -92,8 +93,16 @@ public class Users {
                 .userGrade("일반")
                 .userBlackList(0)
                 .userBlackReason(0)
-                .userJoinDate( LocalDateTime.now())
+              //  .userJoinDate( LocalDateTime.now())
                 .build();
     }
 
+//    public void updateUserImage(String userProfileImage,
+//                                String userProfileImageOriName,
+//                                String userProfileImagePath) {
+//        this.userProfileImage = userProfileImage;
+//        this.userProfileImageOriName = userProfileImageOriName;
+//        this.userProfileImagePath = userProfileImagePath;
+//
+//    }
 }
