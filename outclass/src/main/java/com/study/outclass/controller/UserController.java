@@ -30,13 +30,14 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
-@RequiredArgsConstructor
 @Slf4j
 public class UserController {
-
-    private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
-    private final AuditConfig auditConfig;
+    @Autowired
+    private  UserService userService;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
+    @Autowired
+    private  AuditConfig auditConfig;
 
     @GetMapping("/login")
     public  String login(){

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--<html lang="ko">-->
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<!-- layouts 폴더에 있는 layout1.html파일을 가져온다 -->
+
+<div>
+    <div layout:fragment="content">
+        <div class="container text-center p-5">
+            <div class="row m-5">
+                <div class="col text-start">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/tutorNewAdd">새 강의만들기</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                      </ul>
+                </div>
+                <div class="col-8">
+                  2 of 3 (wider)
+                </div>
+              </div>
+        </div>
+    </div>
+
+</html>

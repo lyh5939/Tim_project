@@ -12,7 +12,7 @@
                 <div class="col text-start">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="/tutorNewAdd">새 강의만들기</a>
+                          <a class="nav-link active" aria-current="page" href="/classNewAdd">새 강의만들기</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">Link</a>
@@ -27,37 +27,51 @@
                 </div>
                 <div class="col-9">
                   <div class="mb-5">
-                     <span class="fw-bold" >강의정보</span>
-                     <span class="text-gray"> | 커리큘럼 | 상세소개 | 커버이미지 | 강의설정 | 자주 묻는 질문 설정 </span>
+                      <span class="fw-bold">
+                         <a th:href="@{/classInfo}">강의정보</a> |
+                      </span>
+                         <a th:href="@{/classSection}">커리큘럼</a> |
+
+                         <a th:href="@{/classCurri}">상세소개</a> |
+                         <a th:href="@{/classCurri}">커버이미지</a> |
+                         <a th:href="@{/classCurri}">강의설정</a> |
+                         <a th:href="@{/classCurri}">자주 묻는 질문 설정</a>
+
                   </div>
                   <div class="mb-1">
                     <h4>강의 정보</h4>
                     <p class="text-end"><span class="text-danger">*</span> 필수 입력 항목입니다.</p>
                   </div>
-                <form action="/tutorInfo" method="post"> 
+                <form action="/classInfoNewAdd" method="post">
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                  <input type="hidden" name="userNo" th:value="${dto.userNo}">
+                  <input type="hidden" name="classInfoNo" th:value="${dto.classInfoNo}">
+
                   <div class="mb-3">
-                    <label for="class_info_title" class="form-label">강의 제목<span class="text-danger">*</span></label>
-                    <input type="title" class="form-control" id="class_info_title" name="class_info_title" placeholder="강의 제목 입력">
+                    <label for="class_info_title" class="form-label">강의 제목<span class="text-danger"> *</span></label>
+                    <input type="title" class="form-control" id="class_info_title" name="classInfoTitle"
+                           placeholder="강의 제목 입력" th:value="${dto.classInfoTitle}">
                   </div>
                   <div class="mb-3">
                     <label for="class_info_summery" class="form-label">강의 두줄 요약<span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="class_info_summery" name="class_info_summery" rows="3"></textarea>
+                    <textarea class="form-control" id="class_info_summery" name="classInfoSummery" rows="3"
+                              th:text="${dto.classInfoSummery}"></textarea>
                   </div>
                   <div class="mb-3">
                     <label for="class_info_study" class="form-label">
                              이런걸 배울 수 있어요<span class="text-danger"> * 두개이상</span></label>
-                    <textarea class="form-control" id="class_info_study" 
-                              name="class_info_study" rows="3"></textarea>
+                    <textarea class="form-control" id="class_info_study"  th:text="${dto.classInfoStudy}"
+                              name="classInfoStudy" rows="3"></textarea>
                   </div>
                   <div class="mb-3">
                     <label for="class_before_knowledge" class="form-label">선수 지식</label>
-                    <textarea class="form-control" id="class_info_before_knowledge" 
-                             name="class_info_before_knowledge" rows="3"></textarea>
+                    <textarea class="form-control" id="class_info_before_knowledge"  th:text="${dto.classInfoBeforeKnowledge}"
+                             name="classInfoBeforeKnowledge" rows="3"></textarea>
                   </div>
                   <div class="row">
                         <div class="col-6 mb-3">
                             <label for="class_info_category1" class="form-label">카테고리<span class="text-danger"> *</span></label>
-                            <select class="form-select" aria-label="Default select example" name="class_info_category1">
+                            <select class="form-select" aria-label="Default select example" name="classInfoCategory">
                                 <option value="개발.프로그래밍" selected>개발.프로그래밍</option>
                                 <option value="게임 개발">게임 개발</option>
                                 <option value="데이터 사이언스">데이터 사이언스</option>
@@ -69,7 +83,7 @@
                         </div>
                         <div class="col-6 mb-3">
                             <label for="class_info_level" class="form-label">강의수준<span class="text-danger"> *</span></label>
-                            <select class="form-select" aria-label="Default select example" name="class_info_level" id="class_info_level">
+                            <select class="form-select" aria-label="Default select example" name="classInfoLevel" id="class_info_level">
                                 <option value="입문" selected>입문</option>
                                 <option value="초급">초급</option>
                                 <option value="중급">중급</option>
@@ -78,7 +92,6 @@
                         </div>
                    </div>     
                    <div class="mb-5">
-                     <button type="submit" class="btn btn-primary">저장후 다음으로</button>
                      <button type="submit" class="btn btn-primary">저장후 다음으로</button>
                    </div>
                 </form>   

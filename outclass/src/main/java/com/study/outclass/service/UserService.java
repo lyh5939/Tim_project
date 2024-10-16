@@ -39,10 +39,6 @@ public class UserService implements UserDetailsService {
         if(findUser.isPresent()){
            throw  new IllegalArgumentException("이미 존재하는 이메일입니다.");
         }
-        Optional<Users> findUser2 = userRepository.findByuserNickname(user.getUserNickname());
-        if(findUser2.isPresent()){
-            throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
-        }
     }
 
     @Override

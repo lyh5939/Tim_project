@@ -1,0 +1,87 @@
+
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<!-- layouts 폴더에 있는 layout1.html파일을 가져온다 -->
+
+    <div layout:fragment="content">
+
+    <!-- include summernote css/js-->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+
+        <div class="container  p-2">
+            <div class="row m-3">
+                <div class="col text-start">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/tutorNewAdd">새 강의만들기</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                      </ul>
+                </div>
+                <div class="col-9">
+                  <div class="mb-5">                     
+                     <span class="text-gray"> 강의정보 | 커리큘럼 | 상세소개 | <span class="fw-bold" >커버이미지</span> | 강의설정 | 자주 묻는 질문 설정 </span>
+                  </div>
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      강의 커버 이미지(썸네일)
+                    </div>
+                <form action="/studyQuestion" method="post">  
+                    <!-- 강의번호 보냄... -->
+                    <input type="hidden" name="class_info_no" value=""> 
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <div class="mb-3">      
+                          <label for="class_info_content" class="form-label">
+                             커버 이미지 <span class="  text-danger">( jpg,png 파일만 업로드 가능, 이미지크기: 1200x781 px )</span>
+                          </label>     
+                          <input type="file" class="form-control" id="class_info_thum_image" name="class_info_thum_image" 
+                                 placeholder="업로드할 커버이미지를 선택하세요">                   
+                        </div>
+                        <div class="mb-3">      
+                          <label for="class_info_price" class="form-label">
+                             가격 설정
+                          </label>     
+                          <input type="text" class="form-control" id="class_info_price" name="class_info_price" 
+                                 placeholder="가격을 입력하세요">                   
+                        </div>
+                        <div class="mb-3">      
+                          <label for="class_info_price" class="form-label">
+                             공개설정
+                          </label>     
+                          <div class="row">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="class_info_open" id="class_info_open">
+                              <label class="form-check-label" for="flexRadioDefault1">
+                                공개
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="class_info_open" id="class_info_open2" checked>
+                              <label class="form-check-label" for="class_info_open">
+                                비공개
+                              </label>
+                            </div>            
+                          </div>  
+                        </div>
+                      </blockquote>
+                    </div>                   
+                    <div class="mb-3 text-center">
+                      <button type="submit" class="btn btn-primary" >저장후 다음으로 이동</button>
+                    </div>     
+                </form>  
+                <br>
+              </div>
+            </div>
+        </div>

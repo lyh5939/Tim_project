@@ -61,7 +61,7 @@
                     </li>
                     <!-- 강사 로그인일때 -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_TUTER')">
-                      <a class="nav-link" href="/tutor">강의관리</a>
+                      <a class="nav-link" href="/classInfo">강의관리</a>
                     </li>
                   <li class="nav-item"  sec:authorize="hasAnyAuthority('ROLE_USER')">
                       <a class="nav-link" href="/tutorSignUpForm">강사지원</a>

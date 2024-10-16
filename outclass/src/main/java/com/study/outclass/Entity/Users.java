@@ -80,6 +80,10 @@ public class Users extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public void changeRole(Role role){
+        this.role = role;
+    }
+
     public static Users createUser(UserDto userDto,
                                   PasswordEncoder passwordEncoder){
 

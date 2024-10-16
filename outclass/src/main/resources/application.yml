@@ -21,11 +21,7 @@ spring:
 ####################################
 # 데이터베이스 설정
 ####################################
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://panda5939.cafe24.com:3306/panda5939
-    username: panda5939
-    password: leeye-8979
+
 
   ####################################
   # JPA 설정
